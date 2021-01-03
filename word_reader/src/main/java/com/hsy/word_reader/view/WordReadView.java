@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.TbsReaderView;
 
 public class WordReadView extends FrameLayout implements TbsReaderView.ReaderCallback {
@@ -37,6 +38,7 @@ public class WordReadView extends FrameLayout implements TbsReaderView.ReaderCal
 
     private void init() {
         mTbsView = new TbsReaderView(getContext(), this);
+        this.addView(mTbsView);
     }
 
     @Override
