@@ -1,0 +1,3 @@
+include ':word_reader'
+include ':app'
+rootProject.name = "TbsUserDemo"
