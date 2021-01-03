@@ -19,15 +19,15 @@ public class WordReadView extends FrameLayout implements TbsReaderView.ReaderCal
     private TbsReaderView mTbsView;
 
     public WordReadView(@NonNull Context context) {
-        super(context, null);
+        this(context, null);
     }
 
     public WordReadView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public WordReadView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr, 0);
+        this(context, attrs, defStyleAttr, 0);
     }
 
     public WordReadView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -52,7 +52,7 @@ public class WordReadView extends FrameLayout implements TbsReaderView.ReaderCal
         Bundle bundle = new Bundle();
         bundle.putString("filePath", filePath);
         bundle.putString("tempPath", Environment.getExternalStorageDirectory()
-                .getPath());
+                .getPath()+"/dsadsa");
         boolean result = mTbsView.preOpen(parseFileType(filePath), false);
         if (result) {
             mTbsView.openFile(bundle);
@@ -71,7 +71,7 @@ public class WordReadView extends FrameLayout implements TbsReaderView.ReaderCal
         if (TextUtils.isEmpty(path)) {
             return "";
         } else {
-            return path.substring(path.lastIndexOf(".") + 1);
+            return path.substring(path.lastIndexOf(".")+1);
         }
     }
 
