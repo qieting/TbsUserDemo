@@ -13,17 +13,21 @@ import com.tencent.smtt.sdk.QbSdk;
 
 public class MainActivity extends AppCompatActivity {
 
+    WordReadView wordReadView ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        wordReadView = new WordReadView(MainActivity.this
+        );
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 ViewGroup VV = findViewById(R.id.ll);
                 VV.removeAllViews();
-                if(WordReadHelper.initFinish(MainActivity.this)){
+                if(WordReadHelper.initFinish()){
+                    wordReadView.destroy();
                     WordReadView wordReadView = new WordReadView(MainActivity.this
                     );
                     VV.addView(wordReadView);
@@ -31,10 +35,15 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(MainActivity.this,"加载中",Toast.LENGTH_LONG).show();
                 }
-
-
-
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(wordReadView!=null){
+            wordReadView.destroy();
+        }
     }
 }
